@@ -119,7 +119,10 @@ class CheckpointDumper(object):
 
     print('Writing variable ' + variable_name + '...')
     with open(os.path.join(self.output_dir, filename), 'wb') as f:
-      f.write(weights.tobytes())
+      if (type(weights) == 'bytes'):
+        f.write(weights)
+      else:
+        f.write(weights.tobytes())
 
 
   def dump_manifest(self, filename='manifest.json'):

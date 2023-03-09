@@ -59,7 +59,7 @@ class TensorflowCheckpointDumper(CheckpointDumper):
     super(TensorflowCheckpointDumper, self).__init__(
       checkpoint_file, output_dir, remove_variables_regex)
 
-    self.reader = tf.train.NewCheckpointReader(self.checkpoint_file)
+    self.reader = tf.compat.v1.train.NewCheckpointReader(self.checkpoint_file)
 
   def var_name_to_filename(self, var_name):
     """Converts variable names to standard file names.
